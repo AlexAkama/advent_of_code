@@ -1,4 +1,4 @@
-package advent_of_code.event_2022.day7;
+package advent_of_code.event_2022.day07;
 
 public class File {
 

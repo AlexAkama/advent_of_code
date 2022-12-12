@@ -1,4 +1,4 @@
-package advent_of_code.event_2022.day1;
+package advent_of_code.event_2022.day01;
 
 import java.io.BufferedReader;
 import java.io.File;

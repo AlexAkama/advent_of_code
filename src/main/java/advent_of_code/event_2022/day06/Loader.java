@@ -1,4 +1,4 @@
-package advent_of_code.event_2022.day6;
+package advent_of_code.event_2022.day06;
 
 public class Loader {
 
