@@ -1,4 +1,4 @@
-package advent_of_code.day2;
+package advent_of_code.event_2022.day2;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,11 +1,11 @@
-package advent_of_code.day10;
+package advent_of_code.event_2022.day10;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import static advent_of_code.day10.Loader.Command.ADDX;
-import static advent_of_code.day10.Loader.Command.NOOP;
+import static advent_of_code.event_2022.day10.Loader.Command.ADDX;
+import static advent_of_code.event_2022.day10.Loader.Command.NOOP;
 
 public class Loader {
 
@@ -43,7 +43,6 @@ public class Loader {
         if (Math.abs(pos - x) < 2) System.out.print(LIT);
         else System.out.print(DARK);
     }
-
 
     private static void part1() {
         if ((cycle - OFFSET) % PERIOD == 0) {

@@ -1,4 +1,4 @@
-package advent_of_code.day9;
+package advent_of_code.event_2022.day9;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static advent_of_code.day9.Loader.Direction.DOWN;
-import static advent_of_code.day9.Loader.Direction.LEFT;
-import static advent_of_code.day9.Loader.Direction.RIGHT;
-import static advent_of_code.day9.Loader.Direction.UP;
-import static advent_of_code.day9.Loader.Direction.findBy;
-import static advent_of_code.day9.Loader.Vector.getNullPair;
-import static advent_of_code.day9.Loader.Vector.getVector;
+import static advent_of_code.event_2022.day9.Loader.Direction.DOWN;
+import static advent_of_code.event_2022.day9.Loader.Direction.LEFT;
+import static advent_of_code.event_2022.day9.Loader.Direction.RIGHT;
+import static advent_of_code.event_2022.day9.Loader.Direction.UP;
+import static advent_of_code.event_2022.day9.Loader.Direction.findBy;
+import static advent_of_code.event_2022.day9.Loader.Vector.getNullPair;
+import static advent_of_code.event_2022.day9.Loader.Vector.getVector;
 
 public class Loader {
 
