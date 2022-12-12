@@ -44,7 +44,6 @@ public class Loader {
             min2 = height;
         }
         int bow = length * width * height;
-        System.out.println(2 * min1 + 2 * min2 + bow);
         return 2 * min1 + 2 * min2 + bow;
     }
 
