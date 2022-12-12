@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Loader {
 
     public static void main(String[] args) throws IOException {
-        String fileName = "src/main/java/advent_of_code/event_2015/day1/data.txt";
+        String fileName = "src/main/java/advent_of_code/event_2015/day01/data.txt";
         java.io.File file = new java.io.File(fileName);
         FileReader fileReader = new FileReader(file);
         String line;
@@ -15,17 +15,29 @@ public class Loader {
             line = reader.readLine();
         }
         char[] chars = line.toCharArray();
-        int floor = 0;
-        int basementPos = 0;
+        System.out.println(part2(chars));
+    }
+
+    private static int part1(char[] chars) {
+        int res = 0;
+        for (char aChar : chars) {
+            if (aChar == '(') res++;
+            if (aChar == ')') res--;
+        }
+        return res;
+    }
+
+    private static int part2(char[] chars) {
+        int res = 0;
         for (int i = 0; i < chars.length; i++) {
-            if (chars[i] == '(') floor++;
-            if (chars[i] == ')') floor--;
-            if (floor < 0) {
-                basementPos = i + 1;
+            if (chars[i] == '(') res++;
+            if (chars[i] == ')') res--;
+            if (res < 0) {
+                res = i + 1;
                 break;
             }
         }
-        System.out.println(basementPos);
+        return res;
     }
 
 }
