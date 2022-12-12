@@ -14,4 +14,6 @@
 
 ## 2015
 - [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2015/day01) 
-(скобочки)
+  (скобочки)
+- [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2015/day02)
+  (упаковка подарков)
