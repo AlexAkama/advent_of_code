@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-import static advent_of_code.event_2022.InputName.INPUT;
-import static advent_of_code.event_2022.InputName.TEST;
+import static advent_of_code.event_2022.Utils.INPUT;
 
 public class Loader {
 
