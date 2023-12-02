@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,21 +16,27 @@ import static advent_of_code.event_2022.Utils.TEST;
 public class Loader {
 
     private static final List<ListNode> NODES = new ArrayList<>();
+
+    private static final int KEY = 811_589_153;
     private static ListNode zero;
 
     public static void main(String[] args) throws IOException {
-        parse(INPUT);
+        System.out.println(BigDecimal.valueOf(KEY).multiply(BigDecimal.valueOf(-3)));
+//        parse(TEST);
+//        printList(NODES.get(0));
+//
+//        for (ListNode node : NODES) move(node);
+//
+//        printList(NODES.get(0));
 
-        for (ListNode node : NODES) move(node);
-
-        int res = getFromZeroAfter(1000 % NODES.size())
-                + getFromZeroAfter(2000 % NODES.size())
-                + getFromZeroAfter(3000 % NODES.size());
-        System.out.println(res);
+//        int res = getFromZeroAfter(1000 % NODES.size())
+//                + getFromZeroAfter(2000 % NODES.size())
+//                + getFromZeroAfter(3000 % NODES.size());
+//        System.out.println(res);
 
     }
 
-    private static int getFromZeroAfter(int i) {
+    private static long getFromZeroAfter(int i) {
         ListNode node = zero;
         while (i > 0) {
             node = node.next;
@@ -39,8 +46,8 @@ public class Loader {
     }
 
     public static void move(ListNode node) {
-        int offset = node.name;
-        int sign = sign(offset);
+        long offset = node.name % NODES.size();
+        long sign = sign(offset);
         if (sign == 0) return;
         offset = Math.abs(offset);
         ListNode cur = node;
@@ -90,7 +97,7 @@ public class Loader {
             ListNode prev = null;
             while (line != null) {
                 int i = Integer.parseInt(line);
-                ListNode node = new ListNode(i);
+                ListNode node = new ListNode(i * KEY);
                 NODES.add(node);
                 if (i == 0) zero = node;
                 node.prev = prev;
