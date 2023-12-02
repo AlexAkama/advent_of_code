@@ -20,6 +20,7 @@
 - [Day 9](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day09)
 - [Day 10](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day10)
 - [Day 13](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day13)
+- [Day 15](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day15)
 
 ## 2023
 - [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day01)
