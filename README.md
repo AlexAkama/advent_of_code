@@ -1,6 +1,14 @@
-# Advent of Code 
+# Advent of Code
+
+## 2015
+
+- [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2015/day01)
+  (скобочки)
+- [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2015/day02)
+  (упаковка подарков)
 
 ## 2022
+
 - [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day01)
 - [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day02)
 - [Day 3](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day03)
@@ -12,8 +20,6 @@
 - [Day 9](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day09)
 - [Day 10](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day10)
 
-## 2015
-- [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2015/day01) 
-  (скобочки)
-- [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2015/day02)
-  (упаковка подарков)
+## 2023
+- [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day1)
+- [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day2)
