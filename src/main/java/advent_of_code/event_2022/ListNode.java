@@ -2,7 +2,7 @@ package advent_of_code.event_2022;
 
 public class ListNode {
 
-    public final int name;
+    public final long name;
     public ListNode next;
     public ListNode prev;
 
