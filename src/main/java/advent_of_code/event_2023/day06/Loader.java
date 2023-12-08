@@ -40,6 +40,9 @@ public class Loader {
         }
     }
 
+    //TODO
+    // Передать прямой пересчет на поиск с двух сторон,
+    // а потом придумать как эти края можно высчитать или оптимизировать поиск
     private static int findVariant(int time, int distance) {
         int count = 0;
         int timeLeft = time - 1;
