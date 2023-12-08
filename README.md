@@ -34,3 +34,4 @@
 - [Day 5](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day05)
 - [Day 6](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day06)
 - [Day 7](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day07)
+- [Day 8](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day08)
