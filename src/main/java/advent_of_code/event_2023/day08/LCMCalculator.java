@@ -1,5 +1,9 @@
 package advent_of_code.event_2023.day08;
 
+
+/**
+ * Вычисление Наибольшего Общего Кратного (НОК) для данного списка чисел.
+ */
 public class LCMCalculator {
 
     private LCMCalculator() {
