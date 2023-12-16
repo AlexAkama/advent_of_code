@@ -1,28 +1,74 @@
 package advent_of_code.event_2023.day10;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import advent_of_code.util.AdventUtils;
+
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import static advent_of_code.event_2023.day10.Loader.Vector.*;
+import static advent_of_code.event_2023.day10.Loader.Vector.DOWN;
+import static advent_of_code.event_2023.day10.Loader.Vector.LEFT;
+import static advent_of_code.event_2023.day10.Loader.Vector.RIGHT;
+import static advent_of_code.event_2023.day10.Loader.Vector.UP;
+import static advent_of_code.event_2023.day10.Loader.Vector.values;
 
+//
+// Идея для как определить точка внутри многоугольника или нет очень проста
+// "Луч из точки пересечет стороны многоугольника нечетное кол-во раз"
+// Использую луч из точки вправо
+//
 public class Loader {
 
     private static final Character GROUND = '.';
     private static final Character START = 'S';
-    private static final Character VISITED = 'X';
-    private static final Character OUTSIDE = 'X';
-    private static final Character INSIDE = 'I';
+    private static final Character OUTSIDE = '*';
 
     private static final String UNEXPECTED_VALUE = "Unexpected value: ";
+
+    private static final BiFunction<Vector, Vector, Character> GET_START_CHAR = (v1, v2) -> {
+
+        switch (v1) {
+            case LEFT -> {
+                return switch (v2) {
+                    case LEFT -> GROUND;
+                    case UP -> 'J';
+                    case RIGHT -> '-';
+                    case DOWN -> '7';
+                };
+            }
+            case UP -> {
+                return switch (v2) {
+                    case LEFT -> 'J';
+                    case UP -> GROUND;
+                    case RIGHT -> 'L';
+                    case DOWN -> '|';
+                };
+            }
+            case RIGHT -> {
+                return switch (v2) {
+                    case LEFT -> '-';
+                    case UP -> 'L';
+                    case RIGHT -> GROUND;
+                    case DOWN -> 'F';
+                };
+            }
+            case DOWN -> {
+                return switch (v2) {
+                    case LEFT -> '7';
+                    case UP -> '-';
+                    case RIGHT -> 'F';
+                    case DOWN -> GROUND;
+                };
+            }
+
+        }
+        return null;
+    };
 
     private static final Function<Character, Vector> UP_GO = character -> switch (character) {
         case '|' -> UP;
@@ -52,63 +98,105 @@ public class Loader {
         default -> throw new IllegalStateException(UNEXPECTED_VALUE + character);
     };
 
-    private static final String INPUT = "src/main/java/advent_of_code/event_2023/day10/test4.txt";
-    private static List<char[]> map;
-    private static char[][] matrix;
+    private static final String INPUT = "src/main/java/advent_of_code/event_2023/day10/data.txt";
+    private static char[][] map;
+    private static char[][] path;
 
+    private static Point startPoint;
 
     public static void main(String[] args) throws IOException {
-        File file = new File(INPUT);
-        FileReader fileReader = new FileReader(file);
-        try (BufferedReader reader = new BufferedReader(fileReader)) {
-            String line = reader.readLine();
-            String emptyLine = String.valueOf(GROUND).repeat(line.length() + 2);
-            map = new ArrayList<>();
-            map.add(emptyLine.toCharArray());
-            int y = 0;
-            Point start = new Point(-1, -1);
-            while (line != null) {
-                map.add((GROUND + line + GROUND).toCharArray());
-                int x = line.indexOf(START);
-                if (x > -1) start = new Point(y + 1, x + 1);
-                y++;
-                line = reader.readLine();
-            }
-            map.add(emptyLine.toCharArray());
+        init();
 
-            List<Point> starts = new ArrayList<>(2);
-            for (Vector vector : values()) {
-                Point point = new Point(start.y, start.x, vector);
-                try {
-                    point = goStep(point);
-                } catch (Exception e) {
-                    continue;
-                }
-                starts.add(point);
-            }
-            Point p1 = starts.get(0);
-            Point p2 = starts.get(1);
-            matrix = new char[map.size()][map.get(0).length];
-            for (char[] chars : matrix) {
-                Arrays.fill(chars, GROUND);
-            }
-            int count = 1;
-            while (!hasContact(p1, p2)) {
-                markVisited(p1);
-                markVisited(p2);
-                p1 = goStep(p1);
-                p2 = goStep(p2);
-                count++;
-            }
+        List<Point> starts = getStartPair();
+        Point p1 = starts.get(0);
+        Point p2 = starts.get(1);
+        char startChar = getStartChar(p1, p2);
+
+        int count = 1;
+        while (!hasContact(p1, p2)) {
             markVisited(p1);
-            fillOut();
-
-            writeMatrix();
-            writeMap();
-
-            System.out.println(count);
-
+            markVisited(p2);
+            p1 = goStep(p1);
+            p2 = goStep(p2);
+            count++;
         }
+        markVisited(p1);
+
+        fillOut();
+
+        path[startPoint.y][startPoint.x] = startChar;
+        int countIn = countIn();
+
+        System.out.println(count);
+        //6903
+        System.out.println(countIn);
+        //265
+
+    }
+
+    private static char getStartChar(Point p1, Point p2) {
+        return GET_START_CHAR.apply(p1.v, p2.v);
+    }
+
+    private static List<Point> getStartPair() {
+        List<Point> starts = new ArrayList<>(2);
+        for (Vector vector : values()) {
+            Point point = new Point(startPoint.y, startPoint.x, vector);
+            try {
+                point = goStep(point);
+            } catch (Exception e) {
+                continue;
+            }
+            starts.add(point);
+        }
+        return starts;
+    }
+
+    private static void init() throws IOException {
+        List<String> list = AdventUtils.readAllFromFile(INPUT);
+        char[] emptyChars = String.valueOf(GROUND).repeat(list.get(0).length() + 2).toCharArray();
+        map = new char[list.size() + 2][];
+        map[0] = emptyChars;
+        map[map.length - 1] = emptyChars;
+        for (int i = 0; i < list.size(); i++) {
+            String line = list.get(i);
+            map[i + 1] = (GROUND + line + GROUND).toCharArray();
+            int pos = line.indexOf(START);
+            if (pos > -1) startPoint = new Point(i + 1, pos + 1);
+        }
+        path = new char[map.length][map[0].length];
+        for (char[] chars : path) {
+            Arrays.fill(chars, GROUND);
+        }
+    }
+
+    private static int countIn() {
+        int count = 0;
+        for (int y = 0; y < path.length; y++) {
+            for (int x = 0; x < path[0].length; x++) {
+                char c = path[y][x];
+                if (c == '.' && checkIn(y, x)) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    private static boolean checkIn(int y, int x) {
+        int count = 0;
+        char prev = path[y][x];
+        for (int i = x + 1; i < path[0].length; i++) {
+            char c = path[y][i];
+            if (c != GROUND && c != OUTSIDE && c != '-') {
+                if ((c == '|') ||
+                        (prev == 'L' && c == '7') || (prev == 'F' && c == 'J')) {
+                    count++;
+                }
+                prev = c;
+            }
+        }
+        return count % 2 != 0;
     }
 
     private static void fillOut() {
@@ -117,64 +205,46 @@ public class Loader {
         deque.add(p);
         while (!deque.isEmpty()) {
             p = deque.pop();
-            markOutside(p);
             for (Vector v : values()) {
                 Point next;
                 char c;
                 try {
-                    next = new Point(p.y + v.d.y, p.x + v.d.x);
-                    c = getFromMap(next);
+                    next = new Point(p.y + v.d.y, p.x + v.d.x, v);
+                    c = getFromPath(next);
                 } catch (Exception e) {
                     continue;
                 }
-                if (c == GROUND && c != OUTSIDE) deque.add(next);
+                if (c == GROUND) {
+                    markOutside(next);
+                    deque.add(next);
+                }
             }
-        }
-    }
-
-    private static void writeMatrix() {
-        try (FileWriter writer = new FileWriter("matrix.txt")) {
-            for (char[] line : matrix) {
-                writer.write(line);
-                writer.write(System.lineSeparator());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    private static void writeMap() {
-        try (FileWriter writer = new FileWriter("map.txt")) {
-            for (char[] line : map) {
-                writer.write(line);
-                writer.write(System.lineSeparator());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
     private static void markOutside(Point point) {
-//        setToMap(point, OUTSIDE);
-        setToMap(point, OUTSIDE);
+        setToPath(point, OUTSIDE);
     }
 
     private static void markVisited(Point point) {
-        //setToMap(point, VISITED);
-        setToMatrix(point, VISITED);
+        setToPath(point, getFromMap(point));
+    }
+
+    private static void setToPath(Point point, char marker) {
+        path[point.y][point.x] = marker;
+    }
+
+    private static char getFromPath(Point point) {
+        return getFrom(path, point);
     }
 
     private static char getFromMap(Point point) {
-        return map.get(point.y)[point.x];
+        return getFrom(map, point);
     }
 
-    private static void setToMap(Point point, char marker) {
-        map.get(point.y)[point.x] = marker;
+    private static char getFrom(char[][] matrix, Point point) {
+        return matrix[point.y][point.x];
     }
-
-    private static void setToMatrix(Point point, char marker) {
-        matrix[point.y][point.x] = marker;
-    }
-
 
     private static boolean hasContact(Point p1, Point p2) {
         return p1.y == p2.y && p1.x == p2.x;
@@ -184,7 +254,7 @@ public class Loader {
         Vector vector = point.v;
         int nextY = point.y + vector.d.y;
         int nextX = point.x + vector.d.x;
-        char next = map.get(nextY)[nextX];
+        char next = map[nextY][nextX];
         Vector nextV = vector.function.apply(next);
         return new Point(nextY, nextX, nextV);
     }
