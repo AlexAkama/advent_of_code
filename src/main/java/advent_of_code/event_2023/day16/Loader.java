@@ -1,14 +1,12 @@
 package advent_of_code.event_2023.day16;
 
 import advent_of_code.util.AdventUtils.Direction;
-import com.sun.jdi.Mirror;
 
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.List;
-import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
@@ -21,7 +19,6 @@ import static advent_of_code.util.AdventUtils.Direction.LEFT;
 import static advent_of_code.util.AdventUtils.Direction.RIGHT;
 import static advent_of_code.util.AdventUtils.Direction.UP;
 import static advent_of_code.util.AdventUtils.readAllFromFile;
-import static advent_of_code.util.AdventUtils.saveMatrix;
 
 public class Loader {
 
@@ -44,12 +41,6 @@ public class Loader {
         case RIGHT -> UP;
     };
 
-    private static final BiFunction<Direction, Mirror, Direction> TURN = (direction, mirror) ->
-            switch (mirror) {
-                case LEFT_MIRROR -> LEFT_MIRROR_TURN.apply(direction);
-                case RIGHT_MIRROR -> RIGHT_MIRROR_TURN.apply(direction);
-            };
-
     private static final Function<Direction, Pair> VERTICAL_SPLIT = direction -> switch (direction) {
         case UP, DOWN -> null;
         case LEFT, RIGHT -> new Pair(UP, DOWN);
@@ -59,13 +50,6 @@ public class Loader {
         case UP, DOWN -> new Pair(LEFT, RIGHT);
         case LEFT, RIGHT -> null;
     };
-
-    private static final BiFunction<Direction, Splitter, Pair> SPLIT = (direction, splitter) ->
-            switch (splitter) {
-                case VERTICAL_SPLITTER -> VERTICAL_SPLIT.apply(direction);
-                case HORIZONTAL_SPLITTER -> HORIZONTAL_SPLIT.apply(direction);
-            };
-
 
     private static int maxY;
     private static int maxX;
@@ -115,10 +99,10 @@ public class Loader {
         Deque<Point> deque = new ArrayDeque<>();
         if (start.isMirror()) {
             Mirror mirror = Mirror.getMirror(start.getChar());
-            start.d = TURN.apply(start.d, mirror);
+            start.d = mirror.function.apply(start.d);
         } else if (start.isSplitter()) {
             Splitter splitter = Splitter.getSplitter(start.getChar());
-            Pair pair = SPLIT.apply(start.d, splitter);
+            Pair pair = splitter.function.apply(start.d);
             if (pair != null) {
                 start.d = pair.d1;
                 Point split = new Point(start.y, start.x, pair.d2);
@@ -143,12 +127,12 @@ public class Loader {
                 }
                 if (next.isMirror()) {
                     Mirror mirror = Mirror.getMirror(next.getChar());
-                    next.d = TURN.apply(next.d, mirror);
+                    next.d = mirror.function.apply(next.d);
                     deque.add(next);
                 }
                 if (next.isSplitter()) {
                     Splitter splitter = Splitter.getSplitter(next.getChar());
-                    Pair pair = SPLIT.apply(next.d, splitter);
+                    Pair pair = splitter.function.apply(next.d);
                     if (pair != null) {
                         next.d = pair.d1;
                         deque.add(next);
@@ -221,10 +205,6 @@ public class Loader {
             else visited[y][x] = '#';
         }
 
-        void markVisited() {
-            visited[y][x] = VISITED;
-        }
-
         char getChar() {
             return matrix[y][x];
         }
@@ -259,13 +239,15 @@ public class Loader {
     }
 
     enum Mirror {
-        LEFT_MIRROR('\\'),
-        RIGHT_MIRROR('/');
+        LEFT_MIRROR('\\', LEFT_MIRROR_TURN),
+        RIGHT_MIRROR('/', RIGHT_MIRROR_TURN);
 
         private final char c;
+        private final UnaryOperator<Direction> function;
 
-        Mirror(char c) {
+        Mirror(char c, UnaryOperator<Direction> function) {
             this.c = c;
+            this.function = function;
         }
 
         public static Mirror getMirror(char c) {
@@ -278,13 +260,15 @@ public class Loader {
     }
 
     enum Splitter {
-        VERTICAL_SPLITTER('|'),
-        HORIZONTAL_SPLITTER('-');
+        VERTICAL_SPLITTER('|', VERTICAL_SPLIT),
+        HORIZONTAL_SPLITTER('-', HORIZONTAL_SPLIT);
 
         private final char c;
+        private final Function<Direction, Pair> function;
 
-        Splitter(char c) {
+        Splitter(char c, Function<Direction, Pair> function) {
             this.c = c;
+            this.function = function;
         }
 
         public static Splitter getSplitter(char c) {
