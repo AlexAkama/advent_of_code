@@ -27,6 +27,18 @@ public class AdventUtils {
         }
     }
 
+    public static class DirectionPair {
+
+        public AdventUtils.Direction d1;
+        public AdventUtils.Direction d2;
+
+        public DirectionPair(AdventUtils.Direction d1, AdventUtils.Direction d2) {
+            this.d1 = d1;
+            this.d2 = d2;
+        }
+
+    }
+
     public enum Direction {
         UP(-1, 0, '↑'),
         DOWN(1, 0, '↓'),
@@ -44,17 +56,39 @@ public class AdventUtils {
             this.arrow = arrow;
         }
 
-        public int dy() {
+        public static Direction getBy(char c) {
+            return switch (c) {
+                case 'U', '3' -> UP;
+                case 'D', '1' -> DOWN;
+                case 'L', '2' -> LEFT;
+                case 'R', '0' -> RIGHT;
+                default -> throw new IllegalArgumentException("Illegal char" + c);
+            };
+        }
+
+        public static Direction getBy(String s) {
+            return switch (s) {
+                case "U" -> UP;
+                case "D" -> DOWN;
+                case "L" -> LEFT;
+                case "R" -> RIGHT;
+                default -> throw new IllegalArgumentException("Illegal string" + s);
+            };
+        }
+
+        public int y() {
             return dy;
         }
 
-        public int dx() {
+        public int x() {
             return dx;
         }
 
         public char arrow() {
             return arrow;
         }
+
+
     }
 
 }
