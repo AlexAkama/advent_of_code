@@ -45,3 +45,5 @@
 - [Day 16](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day16)
 - [Day 17 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day17)
 - [Day 18](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day18)
+- [Day 19 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day19)
+- Day 20 - нет решения
