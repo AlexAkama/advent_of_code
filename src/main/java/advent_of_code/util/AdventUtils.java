@@ -40,29 +40,31 @@ public class AdventUtils {
     }
 
     public enum Direction {
-        UP(-1, 0, '↑'),
-        DOWN(1, 0, '↓'),
-        LEFT(0, -1, '←'),
-        RIGHT(0, 1, '→');
+        UP(-1, 0, '↑', '^'),
+        DOWN(1, 0, '↓', 'v'),
+        LEFT(0, -1, '←', '>'),
+        RIGHT(0, 1, '→', '<');
 
         final int dy;
         final int dx;
 
         final char arrow;
+        final char c;
 
-        Direction(int dy, int dx, char arrow) {
+        Direction(int dy, int dx, char arrow, char c) {
             this.dy = dy;
             this.dx = dx;
             this.arrow = arrow;
+            this.c = c;
         }
 
         public static Direction getBy(char c) {
             return switch (c) {
-                case 'U', '3' -> UP;
-                case 'D', '1' -> DOWN;
-                case 'L', '2' -> LEFT;
-                case 'R', '0' -> RIGHT;
-                default -> throw new IllegalArgumentException("Illegal char" + c);
+                case 'U', '3', '^' -> UP;
+                case 'D', '1', 'v' -> DOWN;
+                case 'L', '2', '<' -> LEFT;
+                case 'R', '0', '>' -> RIGHT;
+                default -> throw new IllegalArgumentException("Illegal char: " + c);
             };
         }
 
@@ -72,7 +74,7 @@ public class AdventUtils {
                 case "D" -> DOWN;
                 case "L" -> LEFT;
                 case "R" -> RIGHT;
-                default -> throw new IllegalArgumentException("Illegal string" + s);
+                default -> throw new IllegalArgumentException("Illegal string: " + s);
             };
         }
 
