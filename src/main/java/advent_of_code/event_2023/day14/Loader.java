@@ -94,13 +94,13 @@ public class Loader {
         if (matrix[y][x] != STONE) return;
         int nextY = y;
         int nextX = x;
-        int tempY = y + direction.y();
-        int tempX = x + direction.x();
+        int tempY = y + direction.dy();
+        int tempX = x + direction.dx();
         while (canGoToHere(tempY, tempX)) {
             nextY = tempY;
             nextX = tempX;
-            tempY += direction.y();
-            tempX += direction.x();
+            tempY += direction.dy();
+            tempX += direction.dx();
         }
         if (nextY != y || nextX != x) {
             matrix[nextY][nextX] = matrix[y][x];

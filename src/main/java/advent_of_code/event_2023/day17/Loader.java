@@ -191,7 +191,7 @@ public class Loader {
         }
 
         Point getNext() {
-            Point next = new Point(y + d.y(), x + d.x(), d, 0);
+            Point next = new Point(y + d.dy(), x + d.dx(), d, 0);
             next.sum = sum + next.getMx();
             return next;
         }
@@ -200,8 +200,8 @@ public class Loader {
             int count = Integer.MAX_VALUE;
             boolean onBorder = (maxY - 1 - y) * (maxX - 1 - x) == 0;
             if (onBorder) {
-                int lastY = y + d.y() * ULTRA_STEP_LIMIT;
-                int lastX = x + d.x() * ULTRA_STEP_LIMIT;
+                int lastY = y + d.dy() * ULTRA_STEP_LIMIT;
+                int lastX = x + d.dx() * ULTRA_STEP_LIMIT;
                 if (lastY > maxY - 1 || lastX > maxX - 1) {
                     count = (maxY - 1 - y) + (maxX - 1 - x);
                 }

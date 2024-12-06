@@ -114,8 +114,8 @@ public class Loader {
         while (!deque.isEmpty()) {
             Point p = deque.pop();
             p.mark();
-            int nextY = p.y + p.d.y();
-            int nextX = p.x + p.d.x();
+            int nextY = p.y + p.d.dy();
+            int nextX = p.x + p.d.dx();
             Point next = new Point(nextY, nextX, p.d);
             if (next.inMatrix()) {
                 if (next.d.arrow() == visited[next.y][next.x]) {

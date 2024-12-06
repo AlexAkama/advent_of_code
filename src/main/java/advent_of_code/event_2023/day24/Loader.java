@@ -197,7 +197,7 @@ public class Loader {
 
         @Override
         public String toString() {
-            return String.format("[x=%s, y=%s]", x, y);
+            return String.format("[dx=%s, dy=%s]", x, y);
         }
 
     }

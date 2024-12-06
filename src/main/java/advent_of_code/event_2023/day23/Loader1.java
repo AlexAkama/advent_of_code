@@ -97,7 +97,7 @@ public class Loader1 {
         }
 
         Point getNext(Direction d) {
-            return new Point(y + d.y(), x + d.x(), d, count + 1, this);
+            return new Point(y + d.dy(), x + d.dx(), d, count + 1, this);
         }
 
         boolean isFinish() {

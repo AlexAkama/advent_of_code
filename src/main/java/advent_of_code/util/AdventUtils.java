@@ -78,11 +78,11 @@ public class AdventUtils {
             };
         }
 
-        public int y() {
+        public int dy() {
             return dy;
         }
 
-        public int x() {
+        public int dx() {
             return dx;
         }
 

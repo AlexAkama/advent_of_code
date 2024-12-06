@@ -159,7 +159,7 @@ public class Loader1 {
 
 
         Point getNext(Direction d) {
-            return new Point(y + d.y(), x + d.x());
+            return new Point(y + d.dy(), x + d.dx());
         }
 
         @Override

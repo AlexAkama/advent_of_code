@@ -73,7 +73,7 @@ public class Loader2 {
                 Direction d = Direction.getBy(color.charAt(color.length() - 1));
                 int v = HexToDecimalConverter.convert(color.substring(0, color.length() - 1));
                 perimeter = perimeter.add(new BigDecimal(v));
-                Point next = new Point(prev.y + v * d.y(), prev.x + v * d.x());
+                Point next = new Point(prev.y + v * d.dy(), prev.x + v * d.dx());
                 points.add(next);
                 prev = next;
                 line = reader.readLine();

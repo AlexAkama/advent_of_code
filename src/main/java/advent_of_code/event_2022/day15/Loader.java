@@ -48,8 +48,8 @@ public class Loader {
     }
 
     private static Point getPoint(String s) {
-        int x = Integer.parseInt(s.substring(s.indexOf("x=") + 2, s.indexOf(',')));
-        int y = Integer.parseInt(s.substring(s.indexOf("y=") + 2));
+        int x = Integer.parseInt(s.substring(s.indexOf("dx=") + 2, s.indexOf(',')));
+        int y = Integer.parseInt(s.substring(s.indexOf("dy=") + 2));
         return new Point(x, y);
     }
 

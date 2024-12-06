@@ -1,10 +1,5 @@
 package advent_of_code.event_2023.day21;
 
-import advent_of_code.util.AdventUtils;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -34,7 +29,7 @@ public class Loader {
         while (!DEQUE.isEmpty()) {
             Point p = DEQUE.pop();
             for (Direction d : Direction.values()) {
-                Point next = new Point(p.y + d.y(), p.x + d.x(), p.count + 1);
+                Point next = new Point(p.y + d.dy(), p.x + d.dx(), p.count + 1);
                 if (next.canGoTo()) {
                     if (next.count < STEP_LIMIT + 1) {
                         DEQUE.add(next);

@@ -118,7 +118,7 @@ public class Loader {
 
         @Override
         public String toString() {
-            return "x:" + x + ",y:" + y;
+            return "dx:" + x + ",dy:" + y;
         }
 
     }
