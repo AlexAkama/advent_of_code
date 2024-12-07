@@ -42,8 +42,8 @@ public class AdventUtils {
     public enum Direction {
         UP(-1, 0, '↑', '^'),
         DOWN(1, 0, '↓', 'v'),
-        LEFT(0, -1, '←', '>'),
-        RIGHT(0, 1, '→', '<');
+        LEFT(0, -1, '←', '<'),
+        RIGHT(0, 1, '→', '>');
 
         final int dy;
         final int dx;
@@ -90,6 +90,7 @@ public class AdventUtils {
             return arrow;
         }
 
+        public char charArrow() {return c;}
 
     }
 
