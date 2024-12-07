@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static advent_of_code.util.AdventUtils.parseStringToInts;
+
 public class Loader {
 
     private static final String DATA = "src/main/java/advent_of_code/event_2024/day02/data.txt";
@@ -115,16 +117,6 @@ public class Loader {
                 line = reader.readLine();
             }
         }
-    }
-
-    private static int[] parseStringToInts(String s) {
-        String[] split = s.split("\\s+");
-        int n = split.length;
-        int[] nums = new int[n];
-        for (int i = 0; i < n; i++) {
-            nums[i] = Integer.parseInt(split[i]);
-        }
-        return nums;
     }
 
     public static int[] removeElementByIndex(int[] ints, int indexToRemove) {

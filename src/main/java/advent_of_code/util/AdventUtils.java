@@ -6,14 +6,29 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Objects;
 
 public class AdventUtils {
 
     private AdventUtils() {
     }
 
-    public static List<String> readAllFromFile(String filename) throws IOException {
-        return Files.readAllLines(Path.of(filename));
+    public static List<String> readAllFromFile(String filename) {
+        try {
+            return Files.readAllLines(Path.of(filename));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static int[] parseStringToInts(String s) {
+        String[] split = s.split("\\s+");
+        int n = split.length;
+        int[] nums = new int[n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = Integer.parseInt(split[i]);
+        }
+        return nums;
     }
 
     public static void saveMatrix(char[][] chars) {
@@ -25,6 +40,52 @@ public class AdventUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static <T> boolean inMatrix(int y, int x, T[][] matrix) {
+        return y >= 0 && y < matrix.length && x >= 0 && x < matrix[y].length;
+    }
+
+    public static boolean inMatrix(int y, int x, char[][] matrix) {
+        return y >= 0 && y < matrix.length && x >= 0 && x < matrix[y].length;
+    }
+
+    public static class Point {
+
+        int y;
+        int x;
+
+        public Point(int y, int x) {
+            this.y = y;
+            this.x = x;
+        }
+
+        public int y() {
+            return y;
+        }
+
+        public int x() {
+            return x;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("[%s,%s]", y, x);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Point point = (Point) o;
+            return y == point.y && x == point.x;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(y, x);
+        }
+
     }
 
     public static class DirectionPair {
@@ -90,8 +151,11 @@ public class AdventUtils {
             return arrow;
         }
 
-        public char charArrow() {return c;}
+        public char charArrow() {
+            return c;
+        }
 
     }
+
 
 }
