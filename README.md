@@ -53,8 +53,10 @@
 
 ## 2024
 
-- [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day01)
-- [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day02)
-- [Day 3](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day03)
-- [Day 4](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day04)
-- [Day 5](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day05)
+- Day 1 - решено
+- [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day02)
+- [Day 3](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day03)
+- Day 4 - решено
+- [Day 5](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day05)
+- [Day 6 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day06)
+- [Day 7](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day07)

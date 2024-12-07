@@ -12,8 +12,22 @@ public class AdventUtils {
     private AdventUtils() {
     }
 
-    public static List<String> readAllFromFile(String filename) throws IOException {
-        return Files.readAllLines(Path.of(filename));
+    public static List<String> readAllFromFile(String filename) {
+        try {
+            return Files.readAllLines(Path.of(filename));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static int[] parseStringToInts(String s) {
+        String[] split = s.split("\\s+");
+        int n = split.length;
+        int[] nums = new int[n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = Integer.parseInt(split[i]);
+        }
+        return nums;
     }
 
     public static void saveMatrix(char[][] chars) {
@@ -90,7 +104,9 @@ public class AdventUtils {
             return arrow;
         }
 
-        public char charArrow() {return c;}
+        public char charArrow() {
+            return c;
+        }
 
     }
 
