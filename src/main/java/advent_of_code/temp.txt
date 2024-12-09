@@ -1,0 +1,213 @@
+public class Day9 {
+    private static final String DATA = "/data.txt";
+    private static final String TEST = "/test.txt";
+
+    private static final StringBuilder SB = new StringBuilder();
+
+    private static boolean flag = true;
+    private static int id = 0;
+
+    private static String resource;
+    private static int[] flat;
+
+    public static void main(String[] args) {
+        init();
+        part1();
+    }
+
+    private static void part1() {
+        flatString();
+        compress();
+        System.out.println(calculate());
+    }
+
+    private static BigInteger calculate() {
+        BigInteger sum = BigInteger.ZERO;
+        for (int i = 1; i < SB.length(); i++) {
+            sum = sum.add(BigInteger.valueOf((SB.charAt(i) - '0') * i));
+        }
+        return sum;
+    }
+
+    private static void compress() {
+        int nexEmptyPosition = findNexEmptyPosition(-1);
+        for (int i = SB.length() - 1; i > nexEmptyPosition; i--) {
+            if (SB.charAt(i) != '.') {
+                SB.setCharAt(nexEmptyPosition, SB.charAt(i));
+                nexEmptyPosition = findNexEmptyPosition(nexEmptyPosition);
+            }
+            SB.deleteCharAt(i);
+            if (nexEmptyPosition == -1) return;
+        }
+    }
+
+    private static int findNexEmptyPosition(int prevIndex) {
+        return SB.indexOf(".", prevIndex + 1);
+    }
+
+    private static void flatString() {
+        char[] chars = resource.toCharArray();
+        for (char c : chars) {
+            String element = flag ? String.valueOf(id) : ".";
+            SB.append(element.repeat((c - '0')));
+            if (flag) id++;
+            flag = !flag;
+        }
+        id--;
+        flag = !flag;
+    }
+
+    private static void init() {
+        File file = new File(TEST);
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader(file);
+            try (BufferedReader reader = new BufferedReader(fileReader)) {
+                resource = reader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
+public class Day9v2 {
+    private static final String DATA = "/data.txt";
+    private static final String TEST = "/test.txt";
+
+    private static String resource;
+    private static List<Integer> flat = new ArrayList<>();
+
+    public static void main(String[] args) {
+        init();
+        part2();
+    }
+
+    private static void part1() {
+        flatString();
+        compress();
+        System.out.println(calculate());
+    }
+
+    private static void part2() {
+        flatString();
+        compressP2();
+        System.out.println(calculate());
+    }
+
+    private static void compressP2() {
+        int finishBlockIndex = flat.size() - 1;
+        int blockSize = getDataBlockSize(finishBlockIndex);
+        int startBlockIndex = finishBlockIndex - blockSize + 1;
+        while (startBlockIndex > -1 && finishBlockIndex > -1) {
+            blockSize = getDataBlockSize(finishBlockIndex);
+            startBlockIndex = finishBlockIndex - blockSize + 1;
+            int insertIndex = findNexEmptyPositionByBlockSize(blockSize);
+            if (insertIndex > -1 && insertIndex < startBlockIndex) {
+                moveBlock(insertIndex, startBlockIndex, blockSize);
+            }
+            finishBlockIndex = startBlockIndex - 1;
+            while (finishBlockIndex > -1 && flat.get(finishBlockIndex) == -1) {
+                finishBlockIndex--;
+            }
+        }
+
+    }
+
+    private static void moveBlock(int insertIndex, int startBlockIndex, int dataBlockSize) {
+        for (int i = 0; i < dataBlockSize; i++) {
+            flat.set(insertIndex + i, flat.get(startBlockIndex + i));
+            flat.set(startBlockIndex + i, -1);
+        }
+    }
+
+    private static int findNexEmptyPositionByBlockSize(int dataBlockSize) {
+        int index = findNexEmptyPosition(0);
+        while (index > 0) {
+            int count = 0;
+            while (index + count < flat.size() && flat.get(index + count) == -1 && count < dataBlockSize) {
+                count++;
+            }
+            if (count == dataBlockSize) {
+                return index;
+            }
+            index = findNexEmptyPosition(index);
+        }
+        return -1;
+    }
+
+    private static int getDataBlockSize(int index) {
+        int v = flat.get(index);
+        int count = 0;
+        while (index - count > -1 && v == flat.get(index - count)) count++;
+        return count;
+    }
+
+
+    private static long calculate() {
+        long sum = 0;
+        for (int i = 0; i < flat.size(); i++) {
+            Integer id = flat.get(i);
+            if (id != -1) {
+                sum += id * i;
+            }
+        }
+        return sum;
+    }
+
+    private static void compress() {
+        int index = findNexEmptyPosition(0);
+        for (int i = flat.size() - 1; i > -1; i--) {
+            if (flat.get(i) != -1) {
+                flat.set(index, flat.get(i));
+                index = findNexEmptyPosition(index);
+            }
+            flat.remove(i);
+            if (index == -1) return;
+        }
+    }
+
+    private static int findNexEmptyPosition(int startIndex) {
+        int index = startIndex + 1;
+        while (index < flat.size()) {
+            if (flat.get(index) == -1) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
+    }
+
+    private static void flatString() {
+        char[] chars = resource.toCharArray();
+        int id = 0;
+        for (int i = 0; i < chars.length; i++) {
+            char ch = chars[i];
+            int dx = ch - '0';
+            boolean isEven = i % 2 == 0;
+            int element = isEven ? id : -1;
+            for (int k = 0; k < dx; k++) {
+                flat.add(element);
+            }
+            if (isEven) id++;
+        }
+    }
+
+    private static void init() {
+        File file = new File(DATA);
+        try {
+            FileReader fileReader = new FileReader(file);
+            try (BufferedReader reader = new BufferedReader(fileReader)) {
+                resource = reader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
