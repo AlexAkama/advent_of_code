@@ -364,3 +364,170 @@ public class Day10 {
 
 
 }
+
+
+// DAY 11
+
+public class Day11 {
+
+    private static final String DATA = "/data.txt";
+    private static final String TEST = "/test.txt";
+
+    private static final int DEEP = 25;
+
+    private static String data;
+    private static List<String> list;
+
+    public static void main(String[] args) {
+        init();
+        buildList();
+        int res = part1();
+        System.out.println(res);
+    }
+
+    private static int part1() {
+        int res = 0;
+        for (String s : list) {
+             res += calculateStones(s);
+        }
+        return res;
+    }
+
+    private static int calculateStones(String element) {
+        return calculateFromElement(element);
+    }
+
+    private static int calculateFromElement(String element) {
+        list = List.of(element);
+        for (int i = 1; i <= DEEP; i++) {
+            updateList();
+        }
+        return list.size();
+    }
+
+    private static void updateList() {
+        List<String> currentList = new ArrayList<>(list);
+        ArrayList<String> nextList = new ArrayList<>();
+        for (String element : currentList) {
+            updateList(element, nextList);
+        }
+        list = nextList;
+    }
+
+    private static void updateList(String element, List<String> list) {
+        if ("0".equals(element)) {
+            list.add("1");
+        } else if (element.length() % 2 == 0) {
+            String s1 = element.substring(0, element.length() / 2);
+            String s2 = element.substring(element.length() / 2);
+            list.add("" + Long.parseLong(s1));
+            list.add("" + Long.parseLong(s2));
+        } else {
+            long value = Long.parseLong(element);
+            list.add("" + value * 2024L);
+        }
+    }
+
+    private static void buildList() {
+        list = new ArrayList<>();
+        String[] split = data.split("\\s+");
+        Collections.addAll(list, split);
+    }
+
+    private static void init() {
+        File file = new File(DATA);
+        try {
+            FileReader fileReader = new FileReader(file);
+            try (BufferedReader reader = new BufferedReader(fileReader)) {
+                data = reader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+
+public class Day11v2 {
+
+    private static final String DATA = "/data.txt";
+    private static final String TEST = "/test.txt";
+
+    private static final int DEEP = 75;
+    private static final Map<String, long[]> CACHE = new HashMap<>();
+
+
+    private static String data;
+    private static List<String> list;
+
+    public static void main(String[] args) {
+        init();
+        long res = part2();
+        System.out.println(res);
+        System.out.println("TEST: 55312");
+        System.out.println("DATA: 216996");
+    }
+
+    private static long part2() {
+        for (String s : list) {
+            build(s, 0);
+        }
+        return calculate();
+    }
+
+    private static long build(String s, int deep) {
+        if (deep == DEEP) return 1L;
+        if (CACHE.containsKey(s)) {
+            long l = CACHE.get(s)[deep];
+            if (l != 0) return l;
+        }
+        List<String> next = getNext(s);
+        long res = 0;
+        for (
+                String n : next) {
+            res += build(n, deep + 1);
+        }
+        CACHE.computeIfAbsent(s, k -> new long[DEEP])[deep] = res;
+        return res;
+    }
+
+    private static long calculate() {
+        long res = 0;
+        for (String s : list) {
+            res += CACHE.get(s)[0];
+        }
+        return res;
+    }
+
+    private static List<String> getNext(String element) {
+        if ("0".equals(element)) return List.of("1");
+        else if (element.length() % 2 == 0) {
+            String s1 = element.substring(0, element.length() / 2);
+            String s2 = element.substring(element.length() / 2);
+            return List.of("" + Long.parseLong(s1), "" + Long.parseLong(s2));
+        } else {
+            long value = Long.parseLong(element);
+            return List.of("" + value * 2024L);
+        }
+    }
+
+    private static void init() {
+        File file = new File(DATA);
+        try {
+            FileReader fileReader = new FileReader(file);
+            try (BufferedReader reader = new BufferedReader(fileReader)) {
+                data = reader.readLine();
+            }
+            buildList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void buildList() {
+        list = new ArrayList<>();
+        String[] split = data.split("\\s+");
+        Collections.addAll(list, split);
+    }
+
+}
