@@ -139,6 +139,11 @@ public class AdventUtils {
             };
         }
 
+        @Override
+        public String toString() {
+            return String.format("(%d,%d)", dy, dx);
+        }
+
         public int dy() {
             return dy;
         }
