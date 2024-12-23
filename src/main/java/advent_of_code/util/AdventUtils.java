@@ -32,11 +32,26 @@ public class AdventUtils {
     }
 
     public static void saveMatrix(char[][] chars) {
-        try (FileWriter writer = new FileWriter("matrix.txt")) {
+        try (FileWriter writer = new FileWriter("chars.txt")) {
             for (char[] line : chars) {
                 writer.write(line);
                 writer.write(System.lineSeparator());
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveMatrix(int[][] ints) {
+        StringBuilder sb = new StringBuilder();
+        for (int y = 0; y < ints.length; y++) {
+            for (int x = 0; x < ints[y].length; x++) {
+                sb.append(String.format("%03d", ints[y][x])).append(" ");
+            }
+            sb.append(System.lineSeparator());
+        }
+        try (FileWriter writer = new FileWriter("matrix.txt")) {
+                writer.write(sb.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,6 +89,16 @@ public class AdventUtils {
 
         public void setX(int x) {
             this.x = x;
+        }
+
+        public void move(Direction d) {
+            y += d.dy;
+            x += d.dx;
+        }
+
+        @Override
+        public Point clone() {
+            return new Point(y, x);
         }
 
         @Override
@@ -149,7 +174,7 @@ public class AdventUtils {
 
         @Override
         public String toString() {
-            return String.format("(%d,%d)", dy, dx);
+            return String.format("%s(%d,%d)", this.name(), dy, dx);
         }
 
         public int dy() {
