@@ -2,12 +2,20 @@
 
 ## 2015
 
+<details>
+<summary>РЕШЕНИЯ</summary>
+
 - [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2015/day01)
   (скобочки)
 - [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2015/day02)
   (упаковка подарков)
 
+</details>
+
 ## 2022
+
+<details>
+<summary>РЕШЕНИЯ</summary>
 
 - [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day01)
 - [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day02)
@@ -19,14 +27,28 @@
 - [Day 8](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day08)
 - [Day 9](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day09)
 - [Day 10](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day10)
+- Day 11 - нет решения
+- Day 12 - нет решения
 - [Day 13](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day13)
+- Day 14 - нет решения
 - [Day 15](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day15)
 - [Day 16](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day16)
 - [Day 17](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day17)
+- Day 18 - нет решения
+- Day 19 - нет решения
 - [Day 20](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day20)
+- Day 21 - нет решения
+- Day 22 - нет решения
 - [Day 23](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day23)
+- Day 24 - нет решения
+- Day 25 - нет решения
+
+</details>
 
 ## 2023
+
+<details>
+<summary>РЕШЕНИЯ</summary>
 
 - [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day01)
 - [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day02)
@@ -50,14 +72,41 @@
 - Day 20 - нет решения
 - [Day 21 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day21)
 - Day 22 - нет решения
+- Day 23 - нет решения
+- Day 25 - нет решения
+- Day 25 - нет решения
+
+</details>
 
 ## 2024
 
-- Day 1 - решено
+<details open>
+<summary>РЕШЕНИЯ</summary>
+
+- Day 1 - решено (нет кода)
 - [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day02)
 - [Day 3](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day03)
-- Day 4 - решено
+- Day 4 - решено (нет кода)
 - [Day 5](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day05)
 - [Day 6](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day06)
 - [Day 7](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day07)
 - [Day 8](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day08)
+- Day 9 - решено (нет кода)
+- Day 10 - решено (нет кода)
+- Day 11 - решено (нет кода)
+- [Day 12](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day12)
+- [Day 13](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day13)
+- [Day 14](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day14)
+- [Day 15 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day15)
+- Day 16 - нет решения
+- Day 17 - нет решения
+- Day 18 - нет решения
+- [Day 19](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day19)
+- Day 20 - нет решения
+- [Day 21 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day21)
+- [Day 22 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day22)
+- [Day 23 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day23)
+- [Day 24 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day24)
+- Day 25 - ?
+
+</details>
