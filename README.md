@@ -98,7 +98,7 @@
 - [Day 13](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day13)
 - [Day 14](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day14)
 - [Day 15 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day15)
-- Day 16 - нет решения
+- [Day 16 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day16)
 - Day 17 - нет решения
 - Day 18 - нет решения
 - [Day 19](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day19)
