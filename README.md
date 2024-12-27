@@ -102,7 +102,7 @@ https://adventofcode.com/
 - [Day 15 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day15)
 - [Day 16 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day16)
 - [Day 17 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day17)
-- Day 18 - нет решения
+- [Day 18](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day18)
 - [Day 19](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day19)
 - Day 20 - нет решения
 - [Day 21 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day21)
