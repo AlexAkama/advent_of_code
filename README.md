@@ -82,7 +82,7 @@ https://adventofcode.com/
 
 ## 2024
 
-<details open>
+<details>
 <summary>РЕШЕНИЯ</summary>
 
 - Day 1 - решено (нет кода)
@@ -110,5 +110,25 @@ https://adventofcode.com/
 - [Day 23 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day23)
 - [Day 24 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day24)
 - [Day 25 part#1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day25)
+
+</details>
+
+## 2025
+
+<details open>
+<summary>РЕШЕНИЯ</summary>
+
+- Day 1
+- Day 2
+- Day 3
+- Day 4
+- Day 5
+- Day 6
+- Day 7
+- Day 8
+- Day 9
+- Day 10
+- Day 11
+- Day 12
 
 </details>
