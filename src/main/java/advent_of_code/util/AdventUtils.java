@@ -65,6 +65,10 @@ public class AdventUtils {
         return y >= 0 && y < matrix.length && x >= 0 && x < matrix[y].length;
     }
 
+    public static boolean inMatrix(int y, int x, int[][] matrix) {
+        return y >= 0 && y < matrix.length && x >= 0 && x < matrix[y].length;
+    }
+
     public static class Point {
 
         int y;

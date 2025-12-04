@@ -119,7 +119,7 @@ https://adventofcode.com/
 <summary>РЕШЕНИЯ</summary>
 
 - Day 1
-- Day 2
+- [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2025/day02)
 - Day 3
 - Day 4
 - Day 5
