@@ -120,8 +120,8 @@ https://adventofcode.com/
 
 - Day 1
 - [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2025/day02)
-- Day 3
-- Day 4
+- [Day 3](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2025/day03)
+- [Day 4](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2025/day04)
 - Day 5
 - Day 6
 - Day 7
