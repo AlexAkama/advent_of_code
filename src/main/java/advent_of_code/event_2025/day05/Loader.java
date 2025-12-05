@@ -3,25 +3,22 @@ package advent_of_code.event_2025.day05;
 import advent_of_code.util.AdventUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import static advent_of_code.util.AdventUtils.inMatrix;
-
-class LaderTest {
+class LoaderTest {
     public static void main(String[] args) {
-        Lader.main("05", "data_test.txt", "TEST");
+        Loader.main("05", "data_test.txt", "TEST");
     }
 }
 
-class LaderData {
+class LoaderData {
     public static void main(String[] args) {
-        Lader.main("05", "data.txt", "DATA");
+        Loader.main("05", "data.txt", "DATA");
     }
 }
 
-public class Lader {
+public class Loader {
 
     private static final List<Interval> INTERVALS = new ArrayList<>();
     private static final List<Long> DATA = new ArrayList<>();

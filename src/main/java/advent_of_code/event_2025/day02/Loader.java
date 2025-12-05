@@ -4,7 +4,7 @@ import advent_of_code.util.AdventUtils;
 
 import java.util.List;
 
-public class Lader {
+public class Loader {
 
     public static final String DAY = "02";
     private static final String TEST = "src/main/java/advent_of_code/event_2025/day" + DAY + "/data_test.txt";

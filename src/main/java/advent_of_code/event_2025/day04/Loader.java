@@ -6,19 +6,19 @@ import java.util.List;
 
 import static advent_of_code.util.AdventUtils.inMatrix;
 
-class LaderTest {
+class LoaderTest {
     public static void main(String[] args) {
-        Lader.main("04", "data_test.txt", "TEST");
+        Loader.main("04", "data_test.txt", "TEST");
     }
 }
 
-class LaderData {
+class LoaderData {
     public static void main(String[] args) {
-        Lader.main("04", "data.txt", "DATA");
+        Loader.main("04", "data.txt", "DATA");
     }
 }
 
-public class Lader {
+public class Loader {
 
     private static final char EMPTY = '.';
 
