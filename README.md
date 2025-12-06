@@ -118,7 +118,7 @@ https://adventofcode.com/
 <details open>
 <summary>РЕШЕНИЯ</summary>
 
-- Day 1
+- [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2025/day01)
 - [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2025/day02)
 - [Day 3](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2025/day03)
 - [Day 4](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2025/day04)

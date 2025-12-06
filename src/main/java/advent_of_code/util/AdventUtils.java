@@ -19,6 +19,10 @@ public class AdventUtils {
         return readAllFromFile(file);
     }
 
+    public static boolean isTest(String[] args) {
+        return "TEST".equalsIgnoreCase(args[2]);
+    }
+
     public static List<String> readAllFromFile(String filename) {
         try {
             return Files.readAllLines(Path.of(filename));
