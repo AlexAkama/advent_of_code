@@ -13,6 +13,12 @@ public class AdventUtils {
     private AdventUtils() {
     }
 
+    public static List<String> readAllFromFile(String... args) {
+        String year = "2025";
+        String file = "src/main/java/advent_of_code/event_" + year + "/day" + args[0] + "/" + args[1];
+        return readAllFromFile(file);
+    }
+
     public static List<String> readAllFromFile(String filename) {
         try {
             return Files.readAllLines(Path.of(filename));
@@ -51,7 +57,7 @@ public class AdventUtils {
             sb.append(System.lineSeparator());
         }
         try (FileWriter writer = new FileWriter("matrix.txt")) {
-                writer.write(sb.toString());
+            writer.write(sb.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }

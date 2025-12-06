@@ -123,7 +123,7 @@ https://adventofcode.com/
 - [Day 3](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2025/day03)
 - [Day 4](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2025/day04)
 - [Day 5](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2025/day05)
-- Day 6
+- [Day 6](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2025/day06)
 - Day 7
 - Day 8
 - Day 9
