@@ -19,6 +19,10 @@ https://adventofcode.com/
 <details>
 <summary>РЕШЕНИЯ</summary>
 
+<p align="center">
+    <img src="https://github.com/AlexAkama/advent_of_code/blob/main/src/main/java/advent_of_code/img/2022.png" alt="2022"/>
+</p>
+
 - [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day01)
 - [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day02)
 - [Day 3](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2022/day03)
@@ -52,6 +56,10 @@ https://adventofcode.com/
 <details>
 <summary>РЕШЕНИЯ</summary>
 
+<p align="center">
+    <img src="https://github.com/AlexAkama/advent_of_code/blob/main/src/main/java/advent_of_code/img/2023.png" alt="2023"/>
+</p>
+
 - [Day 1](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day01)
 - [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day02)
 - [Day 3](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2023/day03)
@@ -84,6 +92,10 @@ https://adventofcode.com/
 
 <details>
 <summary>РЕШЕНИЯ</summary>
+
+<p align="center">
+    <img src="https://github.com/AlexAkama/advent_of_code/blob/main/src/main/java/advent_of_code/img/2024.png" alt="2024"/>
+</p>
 
 - Day 1 - решено (нет кода)
 - [Day 2](https://github.com/AlexAkama/advent_of_code/tree/main/src/main/java/advent_of_code/event_2024/day02)
